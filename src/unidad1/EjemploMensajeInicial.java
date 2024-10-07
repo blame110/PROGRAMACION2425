@@ -1,6 +1,6 @@
 package unidad1;
 
-import java.util.Iterator;
+
 
 public class EjemploMensajeInicial {
 
@@ -17,10 +17,23 @@ public class EjemploMensajeInicial {
 		char escalera = 'B';
 		float pi;
 		double calculoInfinito;
+		
+		int numero1 = 100;
+		double numero2 =234523423423423423423534.3;
+		
+		
+		numero1 =  (int) numero2;
+		
+		System.out.println("El numero 1 es " + numero1);
+		System.out.println("El numero 2 es " + numero2);
+		
+		System.out.println("El maximo valor entero es " + Integer.MAX_VALUE);
+		
+		
 
 		//Esto es un comentario de linea
 		/* 
-		 * Esto es un comentario de muchas lineas
+		 * Esto es un COMENTARIO de muchas lineas
 		 */
 		
 		System.out.println("Mi nombre es " + nombre);
@@ -32,6 +45,9 @@ public class EjemploMensajeInicial {
 		nombre = nombre + " Galvan Florez";
 		
 		System.out.println("Mi nombre es " + nombre);
+		
+		nombre = "Paco";
+		nombre = nombre + apellidos;
 
 		//Para concatenar (unir o juntar) varias variables o valores se utiliza
 		//el operador "+" dependiendo del tipo de valor hara una cosa u otra
