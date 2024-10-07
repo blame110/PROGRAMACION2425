@@ -10,6 +10,7 @@ public class EjemploOperadores {
 		int numAlumnosCETI=19;
 		int numAlumnosFPB=19;
 		int numAlumnosSMR=70;
+		float mediaAlumnos;
 		
 		
 		//Para sumar se usa el +
@@ -30,9 +31,20 @@ public class EjemploOperadores {
 		//Esta instruccion es igual a la anterior
 		sumaAlumnos--;
 		//++ incrementa en 1 una variable numerica
-		sumaAlumnos++;
+		++sumaAlumnos;
 		
-		System.out.println("Los alumnos de informatica actuales son: " + sumaAlumnos);
+		//El operador ++ si se pone a la izquierda, tendrá preferencia y será lo primero
+		//que se ejecute, si se pone a la derecha de la variable se ejecutara despues del resto 
+		//de operadores o funciones
+		System.out.println("Los alumnos de informatica actuales son: " + ++sumaAlumnos);
+		
+		//La media es la suma de todos los alumnos entre la cantidad de grados
+		mediaAlumnos = sumaAlumnos/5;
+		
+		System.out.println("El resto de dividir es; " + 31%2);
+		
+		sumaAlumnos *= 2;
+		
 		
 	}
 
