@@ -11,7 +11,8 @@ public class EjemploOperadores {
 		int numAlumnosFPB=19;
 		int numAlumnosSMR=70;
 		float mediaAlumnos;
-		
+		int num1=4;
+		int num2=3;
 		
 		//Para sumar se usa el +
 		int sumaAlumnos = numAlumnosDAW + numAlumnosASIR;
@@ -45,6 +46,13 @@ public class EjemploOperadores {
 		
 		sumaAlumnos *= 2;
 		
+		//Si hay una cadena de texto con el operador + convierte todo a cadenas
+		System.out.println("El resultado es " + (num1++) + num2);
+		//Si las operaciones aritmeticas las ponemos entre ()  primero se realiza la suma
+		//En este caso el incremento ++ de num1 se hace al final, no se muestra por pantalla
+		System.out.println("El resultado es " + ((num1++) + num2));
+		//Si el incremento ++ se pone antes de la variable, es la primera operacion que se realiza
+		System.out.println("El resultado es " + ((++num1) + num2));
 		
 	}
 
