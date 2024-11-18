@@ -17,17 +17,24 @@ public class EjemploBucles3 {
 		int num = -1;
 		//int numIntentos=5;
 		Scanner teclado = new Scanner(System.in);
-
+		boolean encontrado = false;
 		System.out.println("Numero Generado:" + numGenerado);
 		//Repetimos el numero de intentos 
-		for (int numIntentos = 5; numIntentos > 0; numIntentos--) {
+		for (int numIntentos = 5; numIntentos > 0 && !encontrado; numIntentos--) {
 			//Leo el número que el usuario piensa que es el correcto
 			System.out.print("intento numero " + numIntentos + ":");
 			num = teclado.nextInt();
 
 			if (num == numGenerado) {
 				System.out.println("Felicidades, has acertado");
-				numIntentos = 1;
+				//Con break hacemos que el bucle se acabe
+				//break;
+
+				//Otra opcion de parada de bucle sería poner un booleano que indique el final
+				encontrado = true;
+
+				//Tambien eliminando los intentos se acabaría
+				//numIntentos = 1;
 			} else {
 				//No hemos acertado
 
@@ -48,6 +55,9 @@ public class EjemploBucles3 {
 			}
 
 		}
+
+		//Leer un número por teclado y decir si es primo o no
+		//Un número es primo si solo le divide el 1 o el mismo
 
 		teclado.close();
 
