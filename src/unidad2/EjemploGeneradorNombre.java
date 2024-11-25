@@ -45,6 +45,11 @@ public class EjemploGeneradorNombre {
 
 		System.out.println("El nombre agraciado es: " + nombre);
 
+		//PARTE 2 SACAR EL NÚMERO DE VOCALES DE LA PALABRA GENERADA
+		//Para acceder a una letra de un string se utiliza charAt(pos)
+		//Por ejemplo la tercera posicion del nombre seria nombre.charAt(2)
+		//la longitud de un string es con el metodo .length()
+
 	}
 
 }
