@@ -27,16 +27,29 @@ public class EjemploUsoPersonaje {
 
 		//Creamos un personaje con new y el nombre de la clase
 		Personaje aragorn = new Personaje();
+
+		aragorn.setClase(Personaje.CLASE_GUERRERO);
+
+		Enemigo slimeVerde = new Enemigo();
+
+		Enemigo orcoOscuro = new Enemigo(3, 23, 1, 5, 1, 23, 0, 350, 15, Enemigo.BOSQUE_OSCURO);
+
+		//añadimos las armas a aragorn
+		aragorn.addArma(arcoGelido);
+		aragorn.addArma(lanzaPicas);
+
 		//Para acceder a las variables miembro de la clase se utiliza el .
-		aragorn.fuerza = 13;
+		aragorn.setFuerza(13);
 
-		System.out.println("El personaje tiene " + aragorn.inteligencia + " puntos de inteligencia");
+		System.out.println("El personaje tiene " + aragorn.getInteligencia() + " puntos de inteligencia");
 
-		System.out.println("El personaje tiene " + aragorn.puntosVida + " puntos de vida");
+		System.out.println("El arma principal de Aragorn es " + aragorn.armaPrincipal());
+
+		System.out.println("El personaje tiene " + aragorn.getPuntosVida() + " puntos de vida");
 		int golpe = 4;
 		aragorn.recibirDanio(golpe);
 
-		System.out.println("El personaje tiene " + aragorn.puntosVida + " puntos de vida");
+		System.out.println("El personaje tiene " + aragorn.getPuntosVida() + " puntos de vida");
 
 		System.out.println("Tirada de ataque de aragorn: " + aragorn.tiradaAtaque());
 
@@ -47,6 +60,11 @@ public class EjemploUsoPersonaje {
 		System.out.println("Descripcion del arma: " + arcoGelido.getDescripcion());
 
 		System.out.println("Datos del arma " + arcoGelido);
+
+		System.out.println("Datos del Slime " + slimeVerde);
+
+		System.out.println("Datos del Slime " + orcoOscuro);
+
 	}
 
 }
