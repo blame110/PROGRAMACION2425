@@ -7,8 +7,7 @@ public class EjemploMundo {
 
 		Mundo discWorld = new Mundo();
 
-		discWorld.mostrarMapa();
-
+		discWorld.iniciarMundo();
 	}
 
 }
