@@ -32,12 +32,17 @@ public class EjemploConexionBasica {
 			ResultSet rs = stmt.executeQuery("select * from empleados");
 
 			//teniendo el resultset relleno de registros, los recorremos utilizando la funcion next
-
-			while (rs.next())
+			//Por defecto el resultset no apunta a ningun registro
+			//Es decir si no ejecuto next() ninguna vez y intento acceder a los datos va a fallar
+			Boolean hayMas = rs.next();
+			while (hayMas) {
 				//Para sacar los datos utilizamos funciones get con el tipo de dato y el numero de la columna
 				//o el nombre del campo
 				System.out.println(
 						rs.getInt(1) + "  " + rs.getString(2) + "  " + rs.getString(3) + " " + rs.getDouble("sueldo"));
+
+				hayMas = rs.next();
+			}
 
 			con.close();
 		} catch (Exception e) {
