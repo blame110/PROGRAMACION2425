@@ -98,4 +98,46 @@ public class EmpleadoDAO {
 		return -1;
 	}
 
+	/**
+	 * Funcion que recibe una conexion y los datos del empleado con un empleadoDO
+	 * Y inserta en BD el registro
+	 * @param con Conexión activa a la BD
+	 * @param empleado objeto de la clase EmpleadoDO con los datos a insertar
+	 * @return -1 si falla o no hay datos y 1 si ha podido insertar el registro en BD
+	 */
+	public static int insertEmpleado(Connection con, EmpleadoDO empleado) {
+		//Si el empleado esta vacio devolvemos error con un -1
+		if (empleado == null)
+			return -1;
+
+		try {
+
+			//Para evitar la inyeccion sql los parametros de la query los metemos con ?
+			//Y se los añadiremos despues de forma controlada utilizando preparedStatement
+			String query = "INSERT INTO `frigopie`.`empleados` "
+					+ "(`nombre`, `apellidos`, `edad`, `sueldo`, `puesto`) " + "VALUES (?,?,?,?,?);";
+
+			PreparedStatement pstmt = con.prepareStatement(query);
+
+			//Asignamos el parametro id en la primera interrogacion ( y la unica)
+			pstmt.setString(1, empleado.getNombre());
+			pstmt.setString(2, empleado.getApellidos());
+			pstmt.setInt(3, empleado.getEdad());
+			pstmt.setDouble(4, empleado.getSueldo());
+			pstmt.setInt(5, empleado.getPuesto());
+
+			//Una vez asignados los valores ejecutamos la query
+			//update me devuelve la cantidad de registros afectados por la query
+			int resultado = pstmt.executeUpdate();
+
+			return resultado;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return -1;
+
+		}
+
+	}
+
 }
