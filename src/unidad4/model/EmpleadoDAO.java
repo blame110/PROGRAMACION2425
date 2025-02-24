@@ -140,4 +140,53 @@ public class EmpleadoDAO {
 
 	}
 
+	/**
+	 * Funcion que recibe un empleado y lo modifica en bd
+	 * @param con Conexion activa
+	 * @param empleado EmpleadoDO con los datos a actualizar
+	 * @return -1 si el empleado esta vacio o hay fallo al actualizar 
+	 * -2 si no existe en BD y 1 si lo ha actualizado
+	 */
+	public static int updateEmpleado(Connection con, EmpleadoDO empleado) {
+		//Si el empleado esta vacio devolvemos error con un -1
+		if (empleado == null)
+			return -1;
+
+		try {
+
+			//Primero comprobamos si el empleado existe en bd
+			ResultSet rs = getEmpleado(con, empleado.getIdEmpleado());
+			//Si no esta devolvemos error
+			if (!rs.next())
+				return -2;
+
+			//Para evitar la inyeccion sql los parametros de la query los metemos con ?
+			//Y se los añadiremos despues de forma controlada utilizando preparedStatement
+			String query = "UPDATE `frigopie`.`empleados` SET"
+					+ " `nombre`=?, `apellidos`=?, `edad`=?, `sueldo`=?, `puesto`=? " + " WHERE `idempleados`=?;";
+
+			PreparedStatement pstmt = con.prepareStatement(query);
+
+			//Asignamos el parametro id en la primera interrogacion ( y la unica)
+			pstmt.setString(1, empleado.getNombre());
+			pstmt.setString(2, empleado.getApellidos());
+			pstmt.setInt(3, empleado.getEdad());
+			pstmt.setDouble(4, empleado.getSueldo());
+			pstmt.setInt(5, empleado.getPuesto());
+			pstmt.setInt(6, empleado.getIdEmpleado());
+
+			//Una vez asignados los valores ejecutamos la query
+			//update me devuelve la cantidad de registros afectados por la query
+			int resultado = pstmt.executeUpdate();
+
+			return resultado;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return -1;
+
+		}
+
+	}
+
 }
